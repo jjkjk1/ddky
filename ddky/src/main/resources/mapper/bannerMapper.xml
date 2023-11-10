@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.systop.ddky.banner.mapper.bannerMapper">
+    <select id="findBanners" resultType="com.systop.ddky.common.pojo.Banner">
+        select * from banner
+    </select>
+
+    <select id="findBannerById" resultType="com.systop.ddky.common.pojo.Banner">
+        select * from banner where id = #{id}
+    </select>
+
+    <select id="findBannerByName" resultType="com.systop.ddky.common.pojo.Banner">
+        select * from banner where bannerName like #{bannerName}
+    </select>
+
+    <delete id="delectBannerById">
+        delete from banner where id=#{id}
+    </delete>
+
+    <insert id="saveBanner">
+        insert into banner(bannerName,bannerImage,bannerStatus) values (#{bannerName},#{bannerImage},1)
+    </insert>
+
+    <update id="updateBanner">
+        update banner set bannerImage=#{bannerImage} where id=#{id}
+
+    </update>
+</mapper>

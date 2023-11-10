@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.systop.ddky.user.mapper.UserMapper">
+    <insert id="addUser">
+            insert into user(username,password,phone,status) values(#{username},#{password},#{phone},0)
+    </insert>
+    <update id="updateUser">
+        update user set username=#{username},account=#{account},password=#{password},headimage=#{headimage},phone=#{phone},
+                        email=#{email},status=#{status} where user_id = #{userId}
+    </update>
+
+    <select id="findUsers" resultType="com.systop.ddky.common.pojo.User">
+        select * from user
+    </select>
+    <select id="findUserById" resultType="com.systop.ddky.common.pojo.User">
+        select * from user where user_id = #{userId}
+    </select>
+    <delete id="delectUserById">
+        delete from user where user_id = #{userId}
+    </delete>
+    <select id="loginUser" resultType="com.systop.ddky.common.pojo.User">
+        select * from user where username=#{username}
+    </select>
+    <select id="findUserByName" resultType="com.systop.ddky.common.pojo.User">
+        select * from user where account like  #{account}
+    </select>
+    <update id="uploadImg">
+        update user set headimage=#{headimage} where user_id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.systop.ddky.merchants.mapper.MerchantsMapper">
+    <select id="login" resultType="com.systop.ddky.common.pojo.Merchants">
+        select * from merchants where account=#{account}
+    </select>
+
+    <select id="findMerchants" resultType="com.systop.ddky.common.pojo.Merchants">
+        select * from merchants
+    </select>
+
+    <select id="findMerchantByName" resultType="com.systop.ddky.common.pojo.Merchants">
+        select * from merchants where mername like #{mername}
+    </select>
+
+    <insert id="saveMerchant">
+        insert into merchants(mername,account,password,headimage,phone,status)
+                values (#{mername},#{account},#{password},#{headimage},#{phone},#{status})
+    </insert>
+
+    <update id="updateMerchant">
+        update merchants set mername=#{mername},account=#{account},password=#{password},
+                             headimage=#{headimage},phone=#{phone},status=#{status}
+                        where merchant_id=#{merchantId}
+    </update>
+
+    <delete id="deleteMerchant">
+        delete from merchants where merchant_id=#{merchantId}
+    </delete>
+
+    <select id="findMerchantsByPage" resultType="com.systop.ddky.common.pojo.Merchants">
+        select * from merchants
+    </select>
+</mapper>
